@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#import "iImagePickerController.h"
+#import "ImagePreviewViewController.h"
 
 @interface ViewController ()
 
@@ -14,14 +16,30 @@
 
 @implementation ViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+}
+
+- (void)previewImages:(NSMutableArray*)arrImages
+{
+    ImagePreviewContainerController *container = [[ImagePreviewContainerController alloc] init];
+    [container setArrImages:arrImages];
+    [self presentViewController:[[UINavigationController alloc] initWithRootViewController:container] animated:YES completion:nil];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    iImagePickerController *controller = segue.destinationViewController;
+    if ([controller isKindOfClass:[iImagePickerController class]])
+    {
+        [controller setViewController:self];
+    }
 }
 
 @end

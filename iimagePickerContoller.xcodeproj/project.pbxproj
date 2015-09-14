@@ -7,15 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		92A4916C1BA6A1A800A9C132 /* ImagePreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92A4916B1BA6A1A800A9C132 /* ImagePreviewViewController.m */; };
 		92C25EA61BA299CF0075629D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C25EA51BA299CF0075629D /* main.m */; };
 		92C25EA91BA299CF0075629D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C25EA81BA299CF0075629D /* AppDelegate.m */; };
 		92C25EAC1BA299CF0075629D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C25EAB1BA299CF0075629D /* ViewController.m */; };
 		92C25EAF1BA299CF0075629D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92C25EAD1BA299CF0075629D /* Main.storyboard */; };
 		92C25EB11BA299CF0075629D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92C25EB01BA299CF0075629D /* Images.xcassets */; };
 		92C25EB41BA299CF0075629D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92C25EB21BA299CF0075629D /* LaunchScreen.xib */; };
+		92C25ECB1BA2A5540075629D /* iImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C25ECA1BA2A5540075629D /* iImagePickerController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		92A4916A1BA6A1A800A9C132 /* ImagePreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePreviewViewController.h; sourceTree = "<group>"; };
+		92A4916B1BA6A1A800A9C132 /* ImagePreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePreviewViewController.m; sourceTree = "<group>"; };
 		92C25EA01BA299CF0075629D /* iimagePickerContoller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iimagePickerContoller.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92C25EA41BA299CF0075629D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92C25EA51BA299CF0075629D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -26,6 +30,8 @@
 		92C25EAE1BA299CF0075629D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		92C25EB01BA299CF0075629D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		92C25EB31BA299CF0075629D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		92C25EC91BA2A5540075629D /* iImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iImagePickerController.h; sourceTree = "<group>"; };
+		92C25ECA1BA2A5540075629D /* iImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iImagePickerController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +68,10 @@
 				92C25EA81BA299CF0075629D /* AppDelegate.m */,
 				92C25EAA1BA299CF0075629D /* ViewController.h */,
 				92C25EAB1BA299CF0075629D /* ViewController.m */,
+				92C25EC91BA2A5540075629D /* iImagePickerController.h */,
+				92C25ECA1BA2A5540075629D /* iImagePickerController.m */,
+				92A4916A1BA6A1A800A9C132 /* ImagePreviewViewController.h */,
+				92A4916B1BA6A1A800A9C132 /* ImagePreviewViewController.m */,
 				92C25EAD1BA299CF0075629D /* Main.storyboard */,
 				92C25EB01BA299CF0075629D /* Images.xcassets */,
 				92C25EB21BA299CF0075629D /* LaunchScreen.xib */,
@@ -150,6 +160,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				92C25EAC1BA299CF0075629D /* ViewController.m in Sources */,
+				92A4916C1BA6A1A800A9C132 /* ImagePreviewViewController.m in Sources */,
+				92C25ECB1BA2A5540075629D /* iImagePickerController.m in Sources */,
 				92C25EA91BA299CF0075629D /* AppDelegate.m in Sources */,
 				92C25EA61BA299CF0075629D /* main.m in Sources */,
 			);
@@ -298,6 +310,7 @@
 				92C25EC51BA299CF0075629D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
