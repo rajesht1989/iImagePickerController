@@ -33,6 +33,19 @@
     [self presentViewController:[[UINavigationController alloc] initWithRootViewController:container] animated:YES completion:nil];
 }
 
+- (void)previewImagesFromTopController:(NSMutableArray*)arrImages
+{
+    UIViewController *topController = self;
+    while (topController.presentedViewController)
+    {
+        topController = topController.presentedViewController;
+    }
+    
+    ImagePreviewContainerController *container = [[ImagePreviewContainerController alloc] init];
+    [container setArrImages:arrImages];
+    [topController presentViewController:[[UINavigationController alloc] initWithRootViewController:container] animated:YES completion:nil];
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     iImagePickerController *controller = segue.destinationViewController;

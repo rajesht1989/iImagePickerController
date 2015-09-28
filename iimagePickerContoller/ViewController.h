@@ -11,6 +11,7 @@
 @interface ViewController : UIViewController
 
 - (void)previewImages:(NSMutableArray*)arrImages;
+- (void)previewImagesFromTopController:(NSMutableArray*)arrImages;
 
 @end
 
