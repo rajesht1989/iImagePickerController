@@ -28,9 +28,14 @@
 
 - (void)previewImages:(NSMutableArray*)arrImages
 {
-    ImagePreviewContainerController *container = [[ImagePreviewContainerController alloc] init];
-    [container setArrImages:arrImages];
-    [self presentViewController:[[UINavigationController alloc] initWithRootViewController:container] animated:YES completion:nil];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:[NSString stringWithFormat:@"%d  Image(s) captured",arrImages.count] preferredStyle:UIAlertControllerStyleAlert];
+    [self presentViewController:alertController animated:YES completion:nil];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }]];
+//    ImagePreviewContainerController *container = [[ImagePreviewContainerController alloc] init];
+//    [container setArrImages:arrImages];
+//    [self presentViewController:[[UINavigationController alloc] initWithRootViewController:container] animated:YES completion:nil];
 }
 
 - (void)previewImagesFromTopController:(NSMutableArray*)arrImages

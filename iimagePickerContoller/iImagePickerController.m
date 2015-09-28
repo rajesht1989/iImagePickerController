@@ -24,6 +24,9 @@ typedef struct
     AVCaptureStillImageOutput *stillImageOutput;
     NSMutableArray *arrImages;
     UIButton *btnPreview;
+    UIButton *btnCapture;
+    UIButton *btnDone;
+    UIButton *btnRotate;
 }
 @end
 
@@ -69,7 +72,7 @@ typedef struct
         
         if (config.isSecondaryCamAvail)
         {
-            UIButton *btnRotate = [[UIButton alloc] initWithFrame:CGRectMake(self.view.bounds.size.width - 40, 5, 40, 30)];
+             btnRotate = [[UIButton alloc] initWithFrame:CGRectMake(self.view.bounds.size.width - 40, 5, 40, 30)];
             [btnRotate setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin];
             [btnRotate setTitle:@"R" forState:UIControlStateNormal];
             [btnRotate addTarget:self action:@selector(btnRotateTapped:) forControlEvents:UIControlEventTouchUpInside];
@@ -84,7 +87,9 @@ typedef struct
         [self.view addSubview:vwOverlay];
         
          btnPreview = [[UIButton alloc] initWithFrame:CGRectMake(10, (vwOverlay.bounds.size.height - 60)/2, 60, 60)];
-        [btnPreview setBackgroundColor:[UIColor whiteColor]];
+        [btnPreview.layer setBorderColor:[[UIColor whiteColor] CGColor]];
+        [btnPreview.layer setBorderWidth:2.];
+        [btnPreview.layer setCornerRadius:2.];
         [btnPreview setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [btnPreview addTarget:self action:@selector(btnPreviewTapped:) forControlEvents:UIControlEventTouchUpInside];
         [vwOverlay addSubview:btnPreview];
@@ -97,20 +102,50 @@ typedef struct
         [vwCapture.layer setCornerRadius:vwCapture.bounds.size.width/2];
         [vwOverlay addSubview:vwCapture];
         
-        UIButton *btnCapture = [[UIButton alloc] initWithFrame:CGRectInset(vwCapture.bounds, 5, 5)];
+         btnCapture = [[UIButton alloc] initWithFrame:CGRectInset(vwCapture.bounds, 5, 5)];
         [btnCapture setBackgroundColor:[UIColor whiteColor]];
         [btnCapture setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [btnCapture.layer setCornerRadius:btnCapture.bounds.size.width/2];
         [btnCapture addTarget:self action:@selector(btnCapturedTapped:) forControlEvents:UIControlEventTouchUpInside];
         [vwCapture addSubview:btnCapture];
         
-        UIButton *btnDone = [[UIButton alloc] initWithFrame:CGRectMake(vwOverlay.bounds.size.width - 60, (vwOverlay.bounds.size.height - 30)/2, 60, 30)];
+         btnDone = [[UIButton alloc] initWithFrame:CGRectMake(vwOverlay.bounds.size.width - 60, (vwOverlay.bounds.size.height - 30)/2, 60, 30)];
         [btnDone setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin];
         [btnDone setTitle:@"Done" forState:UIControlStateNormal];
         [btnDone addTarget:self action:@selector(btnDoneTapped:) forControlEvents:UIControlEventTouchUpInside];
         [vwOverlay addSubview:btnDone];
-        
     }
+    
+    //Orientation handling
+    {
+        [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(orientationChanged:) name:UIDeviceOrientationDidChangeNotification  object:nil];
+    }
+}
+
+- (void)orientationChanged:(NSNotification *)notification
+{
+    CGAffineTransform transform;
+    switch ([[UIDevice currentDevice] orientation])
+    {
+        case UIDeviceOrientationPortraitUpsideDown:
+            return;
+            break;
+        case UIDeviceOrientationLandscapeLeft:
+            transform = CGAffineTransformMakeRotation(M_PI_2);
+            break;
+        case UIDeviceOrientationLandscapeRight:
+            transform = CGAffineTransformMakeRotation(M_PI + M_PI_2);
+            break;
+        default:
+            transform = CGAffineTransformMakeRotation(0.0);
+            break;
+    }
+    [UIView animateWithDuration:.3 animations:^{
+        [btnPreview setTransform:transform];
+        [btnCapture setTransform:transform];
+        [btnDone setTransform:transform];
+        [btnRotate setTransform:transform];
+    }];
 }
 
 - (BOOL)prefersStatusBarHidden
@@ -118,6 +153,10 @@ typedef struct
     return YES;
 }
 
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -191,6 +230,7 @@ typedef struct
 - (void)dealloc
 {
     [captureSession stopRunning];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end
