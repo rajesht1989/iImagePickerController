@@ -1,14 +1,13 @@
 //
 //  ImagePreviewViewController.m
-//  Zoho Creator
 //
 //  Created by Rajesh on 2/23/15.
-//  Copyright (c) 2015 My org. All rights reserved.
+//  Copyright (c) 2015 Org. All rights reserved.
 //
 
 #import "ImagePreviewViewController.h"
 
-#define TITLE @"%u of %u"
+#define TITLE @"%ld of %ld"
 
 @interface ImagePreviewContainerController ()
 
@@ -36,7 +35,6 @@
 {
     [self setTitle:[NSString stringWithFormat:TITLE,[_arrImages indexOfObject:image] + 1,[_arrImages count]]];
 }
-
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(ImagePreviewViewController *)viewController
 {

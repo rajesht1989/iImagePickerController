@@ -1,9 +1,8 @@
 //
 //  ImagePreviewViewController.h
-//  Zoho Creator
 //
 //  Created by Rajesh on 2/23/15.
-//  Copyright (c) 2015 My org. All rights reserved.
+//  Copyright (c) 2015 Org. All rights reserved.
 //
 #import <UIKit/UIKit.h>
 

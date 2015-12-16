@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -12,8 +12,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iimagePickerContoller" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="kId-c2-rCX">
-                    <rect key="frame" x="20" y="42" width="441" height="57"/>
-                    <animations/>
+                    <rect key="frame" x="20" y="42" width="440" height="57"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="57" id="1BW-AT-23Q"/>
                     </constraints>
@@ -22,14 +21,9 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Launch icon" translatesAutoresizingMaskIntoConstraints="NO" id="ljE-ei-TMX">
-                    <rect key="frame" x="142" y="116" width="197" height="247"/>
-                    <animations/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="197" id="isp-Er-d6P"/>
-                    </constraints>
+                    <rect key="frame" x="112" y="112" width="256" height="256"/>
                 </imageView>
             </subviews>
-            <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="ljE-ei-TMX" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="F31-ex-xpz"/>
@@ -37,7 +31,6 @@
                 <constraint firstItem="kId-c2-rCX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="42" id="PBL-Wh-pw8"/>
                 <constraint firstItem="kId-c2-rCX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="h5Z-si-TM7"/>
                 <constraint firstItem="ljE-ei-TMX" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="l7I-GH-AQW"/>
-                <constraint firstItem="ljE-ei-TMX" firstAttribute="top" secondItem="kId-c2-rCX" secondAttribute="bottom" constant="17" id="s4X-fZ-J1c"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

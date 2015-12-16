@@ -28,7 +28,7 @@
 
 - (void)previewImages:(NSMutableArray*)arrImages
 {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:[NSString stringWithFormat:@"%d  Image(s) captured",arrImages.count] preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:[NSString stringWithFormat:@"%lu  Image(s) captured",(unsigned long)arrImages.count] preferredStyle:UIAlertControllerStyleAlert];
     [self presentViewController:alertController animated:YES completion:nil];
     [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self dismissViewControllerAnimated:YES completion:nil];
