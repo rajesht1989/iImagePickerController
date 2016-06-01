@@ -203,7 +203,20 @@ typedef struct
             } completion:^(BOOL finished) {
                 [viewCapture removeFromSuperview];
             }];
-            UIImage *capturedImage = [[UIImage alloc]initWithData:[AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageSampleBuffer] scale:1];
+            UIImage *originalImage = [[UIImage alloc]initWithData:[AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageSampleBuffer] scale:1];
+            UIImage *capturedImage;
+            switch ([UIDevice currentDevice].orientation) {
+                case UIDeviceOrientationLandscapeLeft :
+                    capturedImage = [UIImage imageWithCGImage:[originalImage CGImage] scale:[originalImage scale] orientation: UIImageOrientationUp];
+                    break;
+                case UIDeviceOrientationLandscapeRight :
+                    capturedImage = [UIImage imageWithCGImage:[originalImage CGImage] scale:[originalImage scale] orientation: UIImageOrientationDown];
+                    break;
+                default:
+                    capturedImage = originalImage;
+                    break;
+            }
+            
             if (capturedImage)
             {
                 [arrImages addObject:capturedImage];
