@@ -15,7 +15,7 @@
 		92C25EB11BA299CF0075629D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92C25EB01BA299CF0075629D /* Images.xcassets */; };
 		92C25EB41BA299CF0075629D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92C25EB21BA299CF0075629D /* LaunchScreen.xib */; };
 		92C25ECB1BA2A5540075629D /* iImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92C25ECA1BA2A5540075629D /* iImagePickerController.m */; };
-		92F197051BC3B220003401AC /* Launch icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F197041BC3B220003401AC /* Launch icon.png */; settings = {ASSET_TAGS = (); }; };
+		92F197051BC3B220003401AC /* Launch icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 92F197041BC3B220003401AC /* Launch icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -123,6 +123,8 @@
 				TargetAttributes = {
 					92C25E9F1BA299CF0075629D = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = RDBAA992Q3;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -280,10 +282,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = RDBAA992Q3;
 				INFOPLIST_FILE = iimagePickerContoller/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.myorg.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "d71b7022-4c5a-4edd-887e-3e231b04ced2";
+				PROVISIONING_PROFILE_SPECIFIER = WildCard;
 			};
 			name = Debug;
 		};
@@ -291,10 +297,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = iimagePickerContoller/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.myorg.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};

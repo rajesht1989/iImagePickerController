@@ -16,46 +16,35 @@
 
 @implementation ViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
-- (void)previewImages:(NSMutableArray*)arrImages
-{
+- (void)previewImages:(NSMutableArray*)arrImages {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:[NSString stringWithFormat:@"%lu  Image(s) captured",(unsigned long)arrImages.count] preferredStyle:UIAlertControllerStyleAlert];
     [self presentViewController:alertController animated:YES completion:nil];
     [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self dismissViewControllerAnimated:YES completion:nil];
     }]];
-//    ImagePreviewContainerController *container = [[ImagePreviewContainerController alloc] init];
-//    [container setArrImages:arrImages];
-//    [self presentViewController:[[UINavigationController alloc] initWithRootViewController:container] animated:YES completion:nil];
 }
 
-- (void)previewImagesFromTopController:(NSMutableArray*)arrImages
-{
+- (void)previewImagesFromTopController:(NSMutableArray*)arrImages {
     UIViewController *topController = self;
-    while (topController.presentedViewController)
-    {
+    while (topController.presentedViewController) {
         topController = topController.presentedViewController;
     }
-    
     ImagePreviewContainerController *container = [[ImagePreviewContainerController alloc] init];
     [container setArrImages:arrImages];
     [topController presentViewController:[[UINavigationController alloc] initWithRootViewController:container] animated:YES completion:nil];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     iImagePickerController *controller = segue.destinationViewController;
-    if ([controller isKindOfClass:[iImagePickerController class]])
-    {
+    if ([controller isKindOfClass:[iImagePickerController class]]) {
         [controller setViewController:self];
     }
 }

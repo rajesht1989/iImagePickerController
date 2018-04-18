@@ -9,14 +9,12 @@
 #import "iImagePickerController.h"
 #import <AVFoundation/AVFoundation.h>
 
-typedef struct
-{
+typedef struct {
     BOOL isSecondaryCamAvail;
     BOOL isSecondaryCam;
 }ImagePickerConfig;
 
-@interface iImagePickerController ()
-{
+@interface iImagePickerController () {
     AVCaptureSession *captureSession;
     AVCaptureVideoPreviewLayer *captureVideoPreviewLayer;
     AVCaptureDeviceInput *captureDeviceInput;
@@ -32,8 +30,7 @@ typedef struct
 
 @implementation iImagePickerController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     arrImages = [NSMutableArray new];
     captureSession = [[AVCaptureSession alloc]init];
@@ -47,8 +44,7 @@ typedef struct
     NSArray *arrVideoDevices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
     config.isSecondaryCamAvail = arrVideoDevices.count > 1;
     config.isSecondaryCam = NO;
-    if (arrVideoDevices.count)
-    {
+    if (arrVideoDevices.count) {
         captureDeviceInput = [AVCaptureDeviceInput deviceInputWithDevice:arrVideoDevices[0] error:nil];
         [captureSession addInput:captureDeviceInput];
         [captureSession startRunning];
@@ -70,8 +66,7 @@ typedef struct
         [btnCancel addTarget:self action:@selector(btnCancelTapped:) forControlEvents:UIControlEventTouchUpInside];
         [vwOverlayTop addSubview:btnCancel];
         
-        if (config.isSecondaryCamAvail)
-        {
+        if (config.isSecondaryCamAvail) {
              btnRotate = [[UIButton alloc] initWithFrame:CGRectMake(self.view.bounds.size.width - 40, 5, 40, 30)];
             [btnRotate setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin];
             [btnRotate setTitle:@"R" forState:UIControlStateNormal];
@@ -116,14 +111,10 @@ typedef struct
         [vwOverlay addSubview:btnDone];
     }
     
-    //Orientation handling
-    {
         [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(orientationChanged:) name:UIDeviceOrientationDidChangeNotification  object:nil];
-    }
 }
 
-- (void)orientationChanged:(NSNotification *)notification
-{
+- (void)orientationChanged:(NSNotification *)notification {
     CGAffineTransform transform;
     switch ([[UIDevice currentDevice] orientation])
     {
@@ -148,28 +139,23 @@ typedef struct
     }];
 }
 
-- (BOOL)prefersStatusBarHidden
-{
+- (BOOL)prefersStatusBarHidden {
     return YES;
 }
 
-- (UIInterfaceOrientationMask)supportedInterfaceOrientations
-{
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
     return UIInterfaceOrientationMaskPortrait;
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
-- (void)btnCancelTapped:(UIButton *)button
-{
+- (void)btnCancelTapped:(UIButton *)button {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)btnRotateTapped:(UIButton *)button
-{
+- (void)btnRotateTapped:(UIButton *)button {
     NSArray *arrVideoDevices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
     [captureSession beginConfiguration];
     [captureSession removeInput:captureDeviceInput];
@@ -180,8 +166,7 @@ typedef struct
     config.isSecondaryCam = !config.isSecondaryCam;
 }
 
-- (void)btnCapturedTapped:(UIButton *)button
-{
+- (void)btnCapturedTapped:(UIButton *)button {
     [stillImageOutput captureStillImageAsynchronouslyFromConnection:[stillImageOutput connectionWithMediaType:AVMediaTypeVideo] completionHandler: ^(CMSampleBufferRef imageSampleBuffer, NSError *error) {
         if (error)
         {
@@ -228,20 +213,17 @@ typedef struct
     }];
 }
 
-- (void)btnDoneTapped:(UIButton *)button
-{
+- (void)btnDoneTapped:(UIButton *)button {
     [self dismissViewControllerAnimated:YES completion:^{
         [_viewController previewImages:arrImages];
     }];
 }
 
-- (void)btnPreviewTapped:(UIButton *)button
-{
+- (void)btnPreviewTapped:(UIButton *)button {
     [_viewController previewImagesFromTopController:arrImages];
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
     [captureSession stopRunning];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }

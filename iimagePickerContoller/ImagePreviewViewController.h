@@ -6,8 +6,7 @@
 //
 #import <UIKit/UIKit.h>
 
-@interface ImagePreviewContainerController : UIViewController<UIPageViewControllerDataSource>
-{
+@interface ImagePreviewContainerController : UIViewController<UIPageViewControllerDataSource> {
     UIPageViewController *pageViewController;
 }
 @property(nonatomic, strong)NSMutableArray *arrImages;

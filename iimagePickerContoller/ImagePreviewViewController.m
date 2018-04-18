@@ -15,8 +15,7 @@
 
 @implementation ImagePreviewContainerController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationController.navigationBar setTranslucent:NO];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(btnCancelTapped:)];
@@ -31,13 +30,11 @@
     [pageViewController setViewControllers:@[[[ImagePreviewViewController alloc] initWithImage:[_arrImages firstObject] andContainer:self]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
 }
 
-- (void)setTitleWithImage:(UIImage *)image
-{
+- (void)setTitleWithImage:(UIImage *)image {
     [self setTitle:[NSString stringWithFormat:TITLE,[_arrImages indexOfObject:image] + 1,[_arrImages count]]];
 }
 
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(ImagePreviewViewController *)viewController
-{
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(ImagePreviewViewController *)viewController {
     NSInteger iCurrentIndex = [_arrImages indexOfObject:viewController.image];
     if(iCurrentIndex <= 0)
     {
@@ -45,8 +42,7 @@
     }
     return [[ImagePreviewViewController alloc] initWithImage:[_arrImages objectAtIndex:iCurrentIndex - 1] andContainer:self];
 }
-- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(ImagePreviewViewController *)viewController
-{
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(ImagePreviewViewController *)viewController {
     NSInteger iCurrentIndex = [_arrImages indexOfObject:viewController.image];
     if(iCurrentIndex + 1 >= [_arrImages count])
     {
@@ -55,21 +51,18 @@
     return [[ImagePreviewViewController alloc] initWithImage:[_arrImages objectAtIndex:iCurrentIndex + 1] andContainer:self];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
-- (void)btnCancelTapped:(UIBarButtonItem *)barButton
-{
+- (void)btnCancelTapped:(UIBarButtonItem *)barButton {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
 
 @implementation ImagePreviewViewController
-- (instancetype)initWithImage:(UIImage *)image andContainer:(ImagePreviewContainerController *)container;
-{
+- (instancetype)initWithImage:(UIImage *)image andContainer:(ImagePreviewContainerController *)container; {
     if (self = [super init])
     {
         self.image = image;
@@ -77,8 +70,7 @@
     }
     return self;
 }
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     [[self view] setBackgroundColor:[UIColor clearColor]];
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
@@ -120,14 +112,12 @@
     [((UIScrollView *)recognizer.view) zoomToRect:rectToZoomTo animated:YES];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
+- (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [_container setTitleWithImage:self.image];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
